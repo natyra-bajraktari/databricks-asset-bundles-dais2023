@@ -10,7 +10,7 @@ resources:
   pipelines:
     # Our DLT pipeline
     medium_metrics_pipeline:
-      name: "[${bundle.environment}] FE Medium Metrics Pipeline"
+      name: "[${bundle.environment}] FE Medium Metrics Pipeline - NB."
       target: "medium_post_report_${bundle.environment}"
       libraries:
         - file:
@@ -24,7 +24,7 @@ resources:
   jobs:
     # A two-task Databricks Workflow - dlt + notebook report
     fe_medium_metrics:
-      name: "[${bundle.environment}] Metrics for FE Medium Posts"
+      name: "[${bundle.environment}] Metrics for FE Medium Posts- NB."
       tasks:
         - task_key: dlt_medium_pipeline
           pipeline_task:
@@ -39,7 +39,10 @@ resources:
           new_cluster:
             spark_version: 13.1.x-scala2.12
             num_workers: 1
-            node_type_id: i3.xlarge            
+            node_type_id: i3.xlarge
+            policy_id: "E060384AFC00043E"
+            aws_attributes:
+              instance_profile_arn: "arn:aws:iam::997819012307:instance-profile/shard-demo-s3-access"            
 
 environments:
   development:
