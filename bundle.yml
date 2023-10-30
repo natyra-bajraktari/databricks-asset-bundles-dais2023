@@ -8,7 +8,7 @@ workspace:
 resources:
 
   pipelines:
-    # Our DLT pipeline
+    # Our DLT pipeline.
     medium_metrics_pipeline:
       name: "[${bundle.environment}] FE Medium Metrics Pipeline - NB."
       target: "medium_post_report_${bundle.environment}"
@@ -59,7 +59,7 @@ environments:
         medium_metrics_pipeline:
           development: true
 
-  qa: # This environment is when deploying test runs from a pull request on GitHub...
+  qa: # This environment is when deploying test runs from a pull request on GitHub..........
     workspace:
       host: https://e2-demo-west.cloud.databricks.com/
     resources:
